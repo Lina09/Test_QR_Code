@@ -1,0 +1,95 @@
+<html>
+
+<!-- include aframe.js -->
+<script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+<!-- include aframe-ar.js -->
+<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+
+	<script>
+		AFRAME.registerComponent('markerhandler', {
+			tick:function() {
+			 if(document.querySelector('a-marker').object3D.visible == true) {
+			   console.log("marker Detected")
+			   document.getElementById('scanMarker').style.visibility = 'hidden';
+			 }
+			 else {
+			 document.getElementById('scanMarker').style.visibility = 'visible';
+		 	 }
+		 	}
+		});
+	</script>
+
+<link rel="stylesheet"  href="style.css" />
+	<div id="scanMarker">
+		<label>Recherche de marqueur 'Hiro'</label>
+
+
+    <a  href="https://upload.wikimedia.org/wikipedia/commons/4/48/Hiro_marker_ARjs.png">
+     <img class="img2" src="https://raw.githubusercontent.com/Lina09/Test_planet/master/hiro.png" alt="Hiro Marker" width="170" height="170" style="overflow: auto; margin-left: 16px;">
+     </a>
+	</div>
+
+    <body style='margin : 0px; overflow: hidden;'>
+      <a-scene embedded arjs >
+    	<a-marker preset="hiro">
+        <a-sphere position="0 0.5 0" radius="0.3" segments-height="53" src="https://raw.githubusercontent.com/Lina09/Test_planet/master/sunmap.jpg"
+        material="opacity: .99" markerhandler >
+        <a-animation attribute="rotation"
+            easing="linear"
+            dur="130000"
+            fill="forwards"
+            to="0 360 0"
+            repeat="indefinite"></a-animation>
+
+      <a-entity position="1 0 1" >
+           <a-animation attribute="rotation"
+               easing="linear"
+               dur="13000"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
+
+         <!-- The cloud -->
+         <a-sphere position="0 0.5 0" radius="0.16" segments-height="53" src="https://raw.githubusercontent.com/Lina09/Test_planet/master/could.png"
+         material="opacity: .99">
+           <a-animation attribute="rotation"
+                            easing="linear"
+                            dur="220000"
+                            fill="forwards"
+                            from="210 -270 0"
+                            to="-150 90 0"
+                            repeat="indefinite">
+           </a-animation>
+         </a-sphere>
+          <!-- The earth -->
+          <a-sphere src="https://raw.githubusercontent.com/aframevr/sample-assets/master/assets/images/space/earth_atmos_4096.jpg"
+           radius="0.15" segments-height="53" position="0 0.5 0" material="metalness: ; roughness: 1;">
+
+             <a-animation attribute="rotation"
+                              easing="linear"
+                              dur="40000"
+                              fill="forwards"
+                              to="0 360 0"
+                              repeat="indefinite">
+             </a-animation>
+             <!-- The moon -->
+             <a-entity position="0.5 0 0.5" >
+               <a-sphere position="0 0 0" radius=".050" material="roughness: 1;
+                "src="https://raw.githubusercontent.com/Lina09/Test_planet/master/moon.jpg">
+                 <a-animation attribute="rotation"
+                     easing="linear"
+                     dur="13000"
+                     fill="forwards"
+                     to="0 360 0"
+                     repeat="indefinite"></a-animation>
+               </a-sphere>
+            </a-entity>
+          </a-sphere>
+
+          </a-entity>
+    	</a-marker>
+    	<a-entity camera></a-entity>
+
+      </a-scene>
+    </body>
+  </html>

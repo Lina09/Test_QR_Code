@@ -1,0 +1,18 @@
+#scanMarker {
+	z-index: 999;
+	position: absolute;
+	top:25%;
+	margin: auto;
+	text-transform: uppercase;
+	font-weight: bold;
+	border: 3px solid rgb(247, 23, 23);
+	text-align: center;
+	padding: 10px;
+	font-size: 30px;
+	left: 388px;
+}
+
+#scanMarker label {
+	display: block;
+	color: #333;
+}
